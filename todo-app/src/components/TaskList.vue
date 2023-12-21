@@ -4,13 +4,10 @@ import { ref } from 'vue';
 const props = defineProps(['tasks']);
 const isMarkedDone = ref('false');
 
+const emit = defineEmits(['updatingTaskStatus']);
+
 const updateListStatus = (index) => {
-    // get selected task's index and set the status
-    if(props.tasks[index].status === 'Ongoing') {
-        props.tasks[index].status = 'Completed';
-    } else {
-        props.tasks[index].status = 'Ongoing';
-    }
+    emit('updatingTaskStatus', index);
 }
 </script>
 
@@ -28,9 +25,6 @@ const updateListStatus = (index) => {
                     <td :class="(task.status === 'Completed') ? 'statusDone' : '' ">{{task.status}}</td>
                     <td>
                         <div class="tableBtn">
-                            <!-- TO DO:
-                                set function that when doneBtn is clicked will change the text inside 
-                            -->
                             <button class="doneBtn" @click="updateListStatus(index)">
                                 <span v-if="(task.status === 'Completed')">Mark as Undone</span>
                                 <span v-else>Mark as Done</span>
