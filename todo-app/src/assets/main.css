@@ -63,7 +63,7 @@ td, th {
   padding: 5px;
   border-radius: 5px;
   cursor: pointer;
-  width: 120px;
+  width: 150px;
 }
 
 .doneBtn {
@@ -73,4 +73,13 @@ td, th {
 .delete {
   background-color: red;
   color: white;
+}
+
+/* set the style when task is marked done */
+.markedDone {
+  text-decoration: line-through;
+}
+
+.statusDone {
+  color: #0cd405;
 }
