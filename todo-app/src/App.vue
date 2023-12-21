@@ -26,13 +26,22 @@ const handleAddingTask = (addedTask) => {
   })
 }
 
+const handleUpdatingTask = (index) => {
+    // get selected task's index and set the status
+    if(tasks.value[index].status === 'Ongoing') {
+        tasks.value[index].status = 'Completed';
+    } else {
+        tasks.value[index].status = 'Ongoing';
+    }
+  }
+
 </script>
 
 <template>
   <main>
     <div class="container">
       <AddTask @addingTask="handleAddingTask"/>
-      <TaskList :tasks=tasks />
+      <TaskList :tasks=tasks @updatingTaskStatus="handleUpdatingTask" />
     </div>
   </main>
 </template>
